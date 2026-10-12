@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom - Project Catalog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            border-color: rgba(148, 163, 184, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: rgba(96, 165, 250, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+
+        .project-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #f1f5f9;
+        }
+
+        .project-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .inputs-outputs {
+            background: rgba(15, 23, 42, 0.5);
+            border-left: 3px solid rgba(96, 165, 250, 0.4);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .inputs-outputs h4 {
+            color: #60a5fa;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .inputs-outputs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .inputs-outputs li {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .inputs-outputs li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: rgba(96, 165, 250, 0.6);
+        }
+
+        .demo-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            transform: translateX(4px);
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding: 20px 0;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Showroom</h1>
+            <p class="subtitle">A live catalog of my projects — built, tested, and ready to try.</p>
+        </header>
+
+        <div class="projects-grid" id="projects"></div>
+
+        <footer>
+            <p>Each project runs on sample data. No real data, no sign-ups required.</p>
+        </footer>
+    </div>
+
+    <script>
+        const projectsData = [
+            {
+                id: 'hyrox-40',
+                order: 1,
+                name: 'HYROX 40',
+                description: 'iPhone-first PWA for five-day HYROX training with nested timers and target-vs-actual scoring.',
+                inputs: [
+                    'Baseline fitness level',
+                    'Week number'
+                ],
+                outputs: [
+                    'Nested timers for workouts, segments, and rest',
+                    'Target-vs-actual performance scoring'
+                ],
+                demoUrl: 'https://hyrox-40.example.com',
+                repoUrl: 'https://github.com/YOUR-USERNAME/hyrox-40'
+            },
+            {
+                id: 'network-desk',
+                order: 2,
+                name: 'Network Desk',
+                description: 'Ranks your LinkedIn connections by likelihood to help with your job search and surfaces the best people to contact this week.',
+                inputs: [
+                    'LinkedIn export (connections, messages, invites)',
+                    'Target companies for job search',
+                    'Weekly availability in hours'
+                ],
+                outputs: [
+                    'Prioritized queue of 8–15 people to contact this week',
+                    'Personalized contact drafts for each person',
+                    'Friday dashboard: referrals made, conversations started, hiring manager meetings'
+                ],
+                demoUrl: 'https://network-desk.example.com',
+                repoUrl: 'https://github.com/YOUR-USERNAME/network-desk'
+            },
+            {
+                id: 'danish-learning',
+                order: 3,
+                name: 'Danish Learning',
+                description: 'Builds a daily three-document lesson packet tailored to your level, then scores your completed homework.',
+                inputs: [
+                    'Current Danish level (A1–B2)',
+                    'Topics or grammar focus for the week',
+                    'Time spent on homework'
+                ],
+                outputs: [
+                    'Daily lesson (explanations + examples)',
+                    'Daily exercises (written + comprehension)',
+                    'Answer key with scoring and gap analysis'
+                ],
+                demoUrl: 'https://danish-learning.example.com',
+                repoUrl: 'https://github.com/YOUR-USERNAME/danish-learning'
+            }
+        ];
+
+        function renderProjects() {
+            const container = document.getElementById('projects');
+            projectsData.sort((a, b) => a.order - b.order);
+
+            projectsData.forEach((project) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+
+                card.innerHTML = `
+                    <div class="project-number">${project.order}</div>
+                    <h2>${project.name}</h2>
+                    <p>${project.description}</p>
+
+                    <div class="inputs-outputs">
+                        <h4>Input</h4>
+                        <ul>
+                            ${project.inputs.map(input => `<li>${input}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="inputs-outputs">
+                        <h4>Output</h4>
+                        <ul>
+                            ${project.outputs.map(output => `<li>${output}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="demo-badge">✓ Demo on sample data</div>
+                    <br>
+                    <a href="${project.demoUrl}" class="cta-button">Try it</a>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        renderProjects();
+    </script>
+</body>
+</html>

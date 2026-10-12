@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Demo - Showroom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .breadcrumb {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #f1f5f9;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        .demo-frame {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-frame.interactive {
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        .demo-placeholder {
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        .demo-placeholder h3 {
+            margin-bottom: 15px;
+            color: #f1f5f9;
+        }
+
+        .demo-placeholder p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .demo-code {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            color: #cbd5e1;
+            max-width: 100%;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #f1f5f9;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .section li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: rgba(96, 165, 250, 0.6);
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 12px;
+            margin-top: 10px;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #60a5fa;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-secondary:hover {
+            border-color: rgba(96, 165, 250, 0.8);
+            color: #93c5fd;
+        }
+
+        .sample-data-notice {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid rgba(34, 197, 94, 0.4);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #86efac;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            padding: 40px 0 20px;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .demo-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.1rem;
+            }
+
+            .demo-frame {
+                padding: 20px;
+                min-height: 300px;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <header>
+            <div class="breadcrumb">
+                <a href="/">← Back to Showroom</a>
+            </div>
+            <h1 id="projectName">Project Name</h1>
+            <p class="tagline" id="projectTagline">Project description goes here.</p>
+        </header>
+
+        <div class="demo-frame interactive">
+            <div class="demo-placeholder">
+                <h3>Live Demo</h3>
+                <p>This is where the interactive demo or live application will be embedded.</p>
+                <p>The demo runs on sample data for a safe, no-login experience.</p>
+                <div class="demo-code">
+// Demo content loads here
+const demo = {
+    status: 'loading',
+    data: 'sample-data'
+};
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-data-notice">
+            ✓ This demo uses synthetic sample data. No real personal or client data. Safe to explore on any device.
+        </div>
+
+        <div class="section">
+            <h2>What goes in?</h2>
+            <ul id="inputs">
+                <li>Input example 1</li>
+                <li>Input example 2</li>
+                <li>Input example 3</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>What comes out?</h2>
+            <ul id="outputs">
+                <li>Output example 1</li>
+                <li>Output example 2</li>
+                <li>Output example 3</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Ready to try?</h2>
+            <p>This demo is fully functional. Click below to start exploring, or view the source code on GitHub.</p>
+            <a href="#" class="cta-primary">Start Demo</a>
+            <a href="#" class="cta-secondary">View Source on GitHub</a>
+        </div>
+
+        <footer>
+            <p>Showroom — A catalog of live project demos. <a href="/" style="color: #60a5fa; text-decoration: none;">Back to catalog</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Template for rendering demo pages
+        const projectConfig = {
+            name: 'HYROX 40', // Replace with project name
+            tagline: 'iPhone-first PWA for HYROX training', // Replace with project tagline
+            inputs: [
+                'Baseline fitness level',
+                'Week number'
+            ],
+            outputs: [
+                'Nested timers for workouts, segments, and rest',
+                'Target-vs-actual performance scoring'
+            ],
+            demoUrl: '#', // Replace with actual demo URL
+            githubUrl: '#' // Replace with GitHub repo URL
+        };
+
+        document.getElementById('projectName').textContent = projectConfig.name;
+        document.getElementById('projectTagline').textContent = projectConfig.tagline;
+
+        const inputsList = document.getElementById('inputs');
+        inputsList.innerHTML = projectConfig.inputs
+            .map(input => `<li>${input}</li>`)
+            .join('');
+
+        const outputsList = document.getElementById('outputs');
+        outputsList.innerHTML = projectConfig.outputs
+            .map(output => `<li>${output}</li>`)
+            .join('');
+
+        document.querySelectorAll('[href="#"]').forEach(link => {
+            const index = Array.from(document.querySelectorAll('[href="#"]')).indexOf(link);
+            if (index === 0) {
+                link.href = projectConfig.demoUrl;
+                link.textContent = 'Start Demo';
+            } else if (index === 1) {
+                link.href = projectConfig.githubUrl;
+                link.textContent = 'View Source on GitHub';
+            }
+        });
+    </script>
+</body>
+</html>

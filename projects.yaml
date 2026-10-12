@@ -1,0 +1,46 @@
+projects:
+  - id: hyrox-40
+    name: "HYROX 40"
+    description: "iPhone-first PWA for five-day HYROX training with nested timers and target-vs-actual scoring."
+    inputs:
+      - "Baseline fitness level"
+      - "Week number"
+    outputs:
+      - "Nested timers for workouts, segments, and rest"
+      - "Target-vs-actual performance scoring"
+    demoUrl: "https://hyrox-40.example.com"
+    repoUrl: "https://github.com/YOUR-USERNAME/hyrox-40"
+    demoOnSampleData: true
+    order: 1
+
+  - id: network-desk
+    name: "Network Desk"
+    description: "Ranks your LinkedIn connections by likelihood to help with your job search and surfaces the best people to contact this week."
+    inputs:
+      - "LinkedIn export (connections, messages, invites)"
+      - "Target companies for job search"
+      - "Weekly availability in hours"
+    outputs:
+      - "Prioritized queue of 8–15 people to contact this week"
+      - "Personalized contact drafts for each person"
+      - "Friday dashboard: referrals made, conversations started, hiring manager meetings"
+    demoUrl: "https://network-desk.example.com"
+    repoUrl: "https://github.com/YOUR-USERNAME/network-desk"
+    demoOnSampleData: true
+    order: 2
+
+  - id: danish-learning
+    name: "Danish Learning"
+    description: "Builds a daily three-document lesson packet tailored to your level, then scores your completed homework."
+    inputs:
+      - "Current Danish level (A1–B2)"
+      - "Topics or grammar focus for the week"
+      - "Time spent on homework"
+    outputs:
+      - "Daily lesson (explanations + examples)"
+      - "Daily exercises (written + comprehension)"
+      - "Answer key with scoring and gap analysis"
+    demoUrl: "https://danish-learning.example.com"
+    repoUrl: "https://github.com/YOUR-USERNAME/danish-learning"
+    demoOnSampleData: true
+    order: 3
