@@ -1,0 +1,935 @@
+<title>Showroom</title>
+<style>
+/* Nordic Premium Portfolio — Clean, Minimal, Sophisticated */
+/* Layout: Hero + Featured projects + Seamless navigation */
+/* Palette: Off-white, slate grey, muted stone, deep charcoal, subtle teal accent */
+/* Type: NN Sans (geometric sans) + Crimson Text (elegant serif) */
+
+:root {
+  --bg-primary: #fafbf9;
+  --bg-secondary: #f0f1ed;
+  --fg-primary: #1a1b18;
+  --fg-secondary: #58585a;
+  --fg-tertiary: #8b8b8d;
+  --accent: #3d6a5c;
+  --accent-light: #5a8d79;
+  --border: #e8e9e5;
+  --shadow-sm: rgba(26, 27, 24, 0.04);
+  --shadow-md: rgba(26, 27, 24, 0.08);
+
+  --font-serif: 'Crimson Text', Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--fg-primary);
+  line-height: 1.6;
+  color-scheme: light;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--fg-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Layout */
+body {
+  padding: 2rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.header h1 {
+  color: var(--fg-primary);
+  margin-bottom: 1.5rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--fg-secondary);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-tabs button {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--fg-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.nav-tabs button:hover {
+  color: var(--fg-primary);
+}
+
+.nav-tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* View management */
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Home view — Project grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.project-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 24px var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-number {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  color: var(--fg-primary);
+  margin-bottom: 1rem;
+}
+
+.project-card > p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputs-outputs {
+  margin: 1.5rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.inputs-outputs h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-tertiary);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-sans);
+}
+
+.inputs-outputs ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputs-outputs li {
+  font-size: 0.9rem;
+  color: var(--fg-secondary);
+}
+
+.inputs-outputs li::before {
+  content: '→ ';
+  color: var(--accent-light);
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+/* Detail view */
+.product-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.detail-header {
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.detail-header > p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-back {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-sans);
+}
+
+.detail-back:hover {
+  transform: translateX(-4px);
+}
+
+.detail-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border-radius: 0;
+  border: 1px solid var(--border);
+}
+
+.detail-section h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-section li {
+  color: var(--fg-secondary);
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.detail-section li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.detail-section strong {
+  color: var(--fg-primary);
+  font-weight: 600;
+}
+
+/* Network Desk specific */
+.scenario {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+}
+
+.scenario h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg-primary);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-sans);
+}
+
+.scenario p {
+  font-size: 0.95rem;
+  color: var(--fg-secondary);
+  line-height: 1.7;
+}
+
+/* Workflow diagrams */
+.workflow-diagram {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  background: var(--bg-primary);
+  padding: 1rem;
+}
+
+.hyrox-workflow {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  background: var(--bg-primary);
+  padding: 1rem;
+}
+
+.danish-workflow {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  background: var(--bg-primary);
+  padding: 1rem;
+}
+
+/* CTA button */
+.cta {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.cta:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(61, 106, 92, 0.2);
+}
+
+.cta.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.75rem 2rem;
+}
+
+.cta.secondary:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  color: var(--fg-tertiary);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  .header {
+    padding: 3rem 0 2rem;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .nav-tabs {
+    flex-wrap: wrap;
+  }
+
+  .nav-tabs button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.75rem;
+  }
+
+  .detail-section {
+    padding: 1.5rem;
+  }
+
+  .cta-group {
+    flex-direction: column;
+  }
+
+  .cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cta.secondary {
+    width: 100%;
+  }
+
+  .detail-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .workflow-diagram,
+  .hyrox-workflow,
+  .danish-workflow {
+    max-width: 100%;
+  }
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap">
+
+<div class="container">
+  <div class="header">
+    <h1>Showroom</h1>
+    <p class="tagline">Three products built, tested, and ready to explore. Smart tools for real problems.</p>
+
+    <div class="nav-tabs">
+      <button class="nav-btn active" data-view="home">All Projects</button>
+      <button class="nav-btn" data-view="network-desk">Network Desk</button>
+      <button class="nav-btn" data-view="hyrox-40">HYROX 40</button>
+      <button class="nav-btn" data-view="danish-learning">Danish Learning</button>
+    </div>
+  </div>
+
+  <!-- Home View -->
+  <div id="home" class="view active">
+    <div class="projects-grid">
+      <!-- Network Desk -->
+      <div class="project-card" onclick="switchView('network-desk')">
+        <div class="project-number">01</div>
+        <h3>Network Desk</h3>
+        <p>Your LinkedIn network is your career asset. Network Desk reveals which connections matter most for your job search and surfaces the right people to contact this week.</p>
+
+        <div class="inputs-outputs">
+          <h4>Input</h4>
+          <ul>
+            <li>LinkedIn export</li>
+            <li>Target companies</li>
+            <li>Weekly availability</li>
+          </ul>
+        </div>
+
+        <div class="inputs-outputs">
+          <h4>Output</h4>
+          <ul>
+            <li>Ranked contact queue</li>
+            <li>Personalized drafts</li>
+            <li>Weekly impact dashboard</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HYROX 40 -->
+      <div class="project-card" onclick="switchView('hyrox-40')">
+        <div class="project-number">02</div>
+        <h3>HYROX 40</h3>
+        <p>Five-day training blocks with precision. HYROX 40 is an iPhone-first app that keeps you on pace with nested timers and performance tracking.</p>
+
+        <div class="inputs-outputs">
+          <h4>Input</h4>
+          <ul>
+            <li>Fitness baseline</li>
+            <li>Training week</li>
+          </ul>
+        </div>
+
+        <div class="inputs-outputs">
+          <h4>Output</h4>
+          <ul>
+            <li>Nested workout timers</li>
+            <li>Performance scoring</li>
+            <li>Week-to-week progress</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Danish Learning -->
+      <div class="project-card" onclick="switchView('danish-learning')">
+        <div class="project-number">03</div>
+        <h3>Danish Learning</h3>
+        <p>Language instruction that adapts to you. Daily lesson packets at your level, with exercises and auto-graded feedback that shows exactly where you need work.</p>
+
+        <div class="inputs-outputs">
+          <h4>Input</h4>
+          <ul>
+            <li>Language level</li>
+            <li>Focus topics</li>
+            <li>Study hours/week</li>
+          </ul>
+        </div>
+
+        <div class="inputs-outputs">
+          <h4>Output</h4>
+          <ul>
+            <li>Daily lessons</li>
+            <li>Practice exercises</li>
+            <li>Scored feedback</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Network Desk Detail -->
+  <div id="network-desk" class="view">
+    <button class="detail-back" onclick="switchView('home')">← Back</button>
+
+    <div class="product-detail">
+      <div class="detail-header">
+        <h2>Network Desk</h2>
+        <p>Stop treating your network like a contact list. Start treating it like a strategy.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>The Real Problem Job Seekers Face</h3>
+        <p>You have 500 LinkedIn connections. You're job searching. You know you should "activate your network," but which 500? Your best friend from university? Your old boss? That person you met once at a conference three years ago?</p>
+        <p style="margin-top: 1rem;">Most job seekers spray and pray. They send 50 messages hoping 2–3 respond. Network Desk changes this entirely.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>How It Works</h3>
+        <svg class="workflow-diagram" viewBox="0 0 100 110" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#3d6a5c" />
+            </marker>
+          </defs>
+          <!-- LinkedIn -->
+          <rect x="5" y="5" width="20" height="14" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="15" y="13" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">LinkedIn</text>
+          <text x="15" y="20" text-anchor="middle" font-size="5" fill="#58585a">Export</text>
+          <!-- Arrow -->
+          <line x1="26" y1="12" x2="36" y2="12" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Analyze -->
+          <rect x="38" y="5" width="20" height="14" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="48" y="13" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Analyze</text>
+          <text x="48" y="20" text-anchor="middle" font-size="5" fill="#58585a">Patterns</text>
+          <!-- Arrow -->
+          <line x1="59" y1="12" x2="69" y2="12" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Match -->
+          <rect x="71" y="5" width="20" height="14" fill="#e8e9e5" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="81" y="13" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Match to</text>
+          <text x="81" y="20" text-anchor="middle" font-size="5" fill="#58585a">Your Goals</text>
+          <!-- Down arrow -->
+          <line x1="81" y1="20" x2="81" y2="28" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Rank -->
+          <rect x="65" y="30" width="20" height="14" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="75" y="38" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Rank by</text>
+          <text x="75" y="45" text-anchor="middle" font-size="5" fill="#58585a">Likelihood</text>
+          <!-- Left arrow -->
+          <line x1="65" y1="37" x2="50" y2="37" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Queue -->
+          <rect x="20" y="30" width="20" height="14" fill="#fafbf9" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="30" y="38" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Prioritized</text>
+          <text x="30" y="45" text-anchor="middle" font-size="5" fill="#58585a">Queue</text>
+          <!-- Down arrow -->
+          <line x1="30" y1="45" x2="30" y2="53" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Drafts -->
+          <rect x="10" y="55" width="20" height="14" fill="#fafbf9" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="20" y="63" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Personalized</text>
+          <text x="20" y="70" text-anchor="middle" font-size="5" fill="#58585a">Outreach</text>
+          <!-- Right arrow -->
+          <line x1="31" y1="62" x2="50" y2="62" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Dashboard -->
+          <rect x="52" y="55" width="20" height="14" fill="#fafbf9" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="62" y="63" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Weekly</text>
+          <text x="62" y="70" text-anchor="middle" font-size="5" fill="#58585a">Dashboard</text>
+          <!-- Down arrow -->
+          <line x1="62" y1="70" x2="62" y2="78" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead)"/>
+          <!-- Results -->
+          <rect x="50" y="80" width="24" height="14" fill="#e8e9e5" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="62" y="88" text-anchor="middle" font-size="7" font-weight="500" fill="#1a1b18">Track Results</text>
+          <text x="62" y="95" text-anchor="middle" font-size="5" fill="#58585a">Referrals & Meetings</text>
+        </svg>
+      </div>
+
+      <div class="detail-section">
+        <h3>What Goes In</h3>
+        <ul>
+          <li><strong>LinkedIn export:</strong> Your complete connection history with message threads and interaction timestamps. Network Desk reads who you talk to, how often, and how recently.</li>
+          <li><strong>Target companies:</strong> The 3–5 organizations you're actually pursuing. This calibrates the ranking algorithm to your specific search.</li>
+          <li><strong>Weekly availability:</strong> Be honest about how many hours you can dedicate. Network Desk sizes your weekly queue to what you can actually execute.</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>What Comes Out</h3>
+        <ul>
+          <li><strong>Ranked contact queue:</strong> 8–15 people sorted by "actual likelihood to help," not recency or closeness. Each person includes a reason: "works at Shopify + strong recommender" or "hired PMs from your background + recent message."</li>
+          <li><strong>Personalized outreach drafts:</strong> Not generic templates. Real messages that reference your relationship history, shared interests, and why they specifically matter for your search.</li>
+          <li><strong>Weekly tracking dashboard:</strong> How many people reached out to? Response rate? Meetings scheduled? Referrals made? Where are your wins happening?</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>Three Concrete Scenarios</h3>
+
+        <div class="scenario">
+          <h4>Scenario 1: The Career Pivot (Banking → Tech PM)</h4>
+          <p>You spent 5 years in banking. Now you want a PM role at a tech company. Your 500 connections are 60% bankers, 15% university friends, 25% random. A human would reach out to their closest banker friends. Network Desk does the opposite — it surfaces the 12 tech people buried in your extended network (people you connected with years ago, people your banker friends know). These 12 have real optionality in tech. You reach out to exactly those people. Result: 4 conversations, 1 warm intro to a hiring manager, 1 offer discussion.</p>
+        </div>
+
+        <div class="scenario">
+          <h4>Scenario 2: The Geographic Move (India → Copenhagen)</h4>
+          <p>You're relocating from India to Copenhagen for a PO role. You have maybe 20 Scandinavian connections scattered across your network. A human would never find them all. Network Desk surfaces every single one, weighted by "likelihood to help someone relocating from South Asia." It learns from patterns: who has hired international talent? Who works at your target companies? Who is in your network's network? Your 20 scattered connections become your ranked top 8. You contact the right people, at the right time, with the right context.</p>
+        </div>
+
+        <div class="scenario">
+          <h4>Scenario 3: The Warm Introduction at Scale</h4>
+          <p>Without Network Desk: You reach out to 50 people hoping 5 respond, hoping 1 has a real lead. Success rate: 2–4%. With Network Desk: You reach out to 12 people, each chosen because they have a genuine connection to your goal. Success rate: 40–60%. Same time investment. 10× better outcomes.</p>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Why This Matters</h3>
+        <p>Your network's power isn't in its size. It's in <em>understanding who can actually help you, when, and why.</em> Most job seekers think "more connections = better odds." That's backwards. A 50-person network of the right people beats a 500-person network of random contacts every time.</p>
+        <p style="margin-top: 1rem;">Network Desk turns LinkedIn from a contact graveyard into a strategic asset. Every outreach becomes intentional. Every conversation becomes warm. Your job search shifts from volume to intelligence.</p>
+        <p style="margin-top: 1rem;"><em>Demo runs on synthetic LinkedIn data with realistic connection patterns. No real personal data. Safe to explore and learn from.</em></p>
+      </div>
+
+      <div class="cta-group">
+        <a href="demo-network-desk.html" class="cta">Try Demo</a>
+        <a href="#" class="cta secondary">View Source</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HYROX 40 Detail -->
+  <div id="hyrox-40" class="view">
+    <button class="detail-back" onclick="switchView('home')">← Back</button>
+
+    <div class="product-detail">
+      <div class="detail-header">
+        <h2>HYROX 40</h2>
+        <p>Five days to race-ready. Built for iPhone, designed for HYROX athletes.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>The Training Challenge</h3>
+        <p>HYROX is precise. 8 km run, 8 workout stations, no pace variation. You need to train at your exact pace, hit your exact splits, and know your segment times down to the second. A paper schedule won't cut it. You need a tool that keeps you in rhythm and shows you whether you're improving week to week.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>How HYROX 40 Works</h3>
+        <svg class="hyrox-workflow" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#3d6a5c" />
+            </marker>
+          </defs>
+          <!-- Input -->
+          <rect x="5" y="10" width="20" height="14" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="15" y="18" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Fitness</text>
+          <text x="15" y="25" text-anchor="middle" font-size="5" fill="#58585a">Baseline</text>
+          <!-- Arrow -->
+          <line x1="26" y1="17" x2="35" y2="17" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead2)"/>
+          <!-- Train -->
+          <rect x="37" y="10" width="20" height="14" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="47" y="18" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">5-Day</text>
+          <text x="47" y="25" text-anchor="middle" font-size="5" fill="#58585a">Block</text>
+          <!-- Arrow down -->
+          <line x1="47" y1="25" x2="47" y2="33" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead2)"/>
+          <!-- Nested Timers -->
+          <rect x="32" y="35" width="30" height="14" fill="#e8e9e5" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="47" y="43" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Nested Timers</text>
+          <text x="47" y="50" text-anchor="middle" font-size="4" fill="#58585a">Workout → Segment → Rest</text>
+          <!-- Arrow right -->
+          <line x1="63" y1="42" x2="72" y2="42" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead2)"/>
+          <!-- Scoring -->
+          <rect x="74" y="35" width="20" height="14" fill="#fafbf9" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="84" y="43" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Target vs</text>
+          <text x="84" y="50" text-anchor="middle" font-size="5" fill="#58585a">Actual</text>
+          <!-- Arrow down -->
+          <line x1="84" y1="50" x2="84" y2="58" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead2)"/>
+          <!-- Progress -->
+          <rect x="72" y="60" width="24" height="14" fill="#e8e9e5" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="84" y="68" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Week-over-Week</text>
+          <text x="84" y="75" text-anchor="middle" font-size="4" fill="#58585a">Progress Tracking</text>
+        </svg>
+      </div>
+
+      <div class="detail-section">
+        <h3>What Goes In</h3>
+        <ul>
+          <li><strong>Baseline fitness level:</strong> Your starting point. Are you training from scratch or coming off another race?</li>
+          <li><strong>Training week number:</strong> Which week of your HYROX prep cycle you're in. Week 1 looks different from week 4.</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>What Comes Out</h3>
+        <ul>
+          <li><strong>Nested timers:</strong> Workout timer (your 8 km run pace), segment timers (each station), rest timers (recovery between stations). Everything synced to your fitness level.</li>
+          <li><strong>Performance scoring:</strong> Target pace vs. actual pace. Did you hit your splits? Where did you lose time? Which stations are your weakness?</li>
+          <li><strong>Progress tracking:</strong> See how your performance improves week to week. Are your segment times dropping? Is your pace getting tighter?</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>Built for iPhone, Built for Athletes</h3>
+        <p>HYROX 40 is fast and responsive. It runs offline. No app store friction, no subscriptions, just a tool you trust on race day. Your phone becomes your coach — keeping you in rhythm, showing you your weaknesses, celebrating your improvements.</p>
+        <p style="margin-top: 1rem;"><em>Demo runs on sample workout data with realistic HYROX training blocks.</em></p>
+      </div>
+
+      <div class="cta-group">
+        <a href="demo-hyrox-40.html" class="cta">Try Demo</a>
+        <a href="#" class="cta secondary">View Source</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Danish Learning Detail -->
+  <div id="danish-learning" class="view">
+    <button class="detail-back" onclick="switchView('home')">← Back</button>
+
+    <div class="product-detail">
+      <div class="detail-header">
+        <h2>Danish Learning</h2>
+        <p>Personalized language instruction. Daily lessons that adapt to your level.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>The Language Learning Problem</h3>
+        <p>Generic textbooks don't work. They're written for everyone, which means they're written for no one. You're stuck with grammar you already know and vocabulary you'll never use. You need daily lessons that match your exact level and your actual learning goals.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>How It Works</h3>
+        <svg class="danish-workflow" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#3d6a5c" />
+            </marker>
+          </defs>
+          <!-- Level -->
+          <rect x="8" y="8" width="18" height="12" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="17" y="15" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Level</text>
+          <text x="17" y="21" text-anchor="middle" font-size="4" fill="#58585a">A1–B2</text>
+          <!-- Arrow -->
+          <line x1="27" y1="14" x2="36" y2="14" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead3)"/>
+          <!-- Topics -->
+          <rect x="38" y="8" width="18" height="12" fill="#f0f1ed" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="47" y="15" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Topics &</text>
+          <text x="47" y="21" text-anchor="middle" font-size="4" fill="#58585a">Goals</text>
+          <!-- Arrow down -->
+          <line x1="47" y1="21" x2="47" y2="29" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead3)"/>
+          <!-- Generate -->
+          <rect x="28" y="31" width="38" height="12" fill="#e8e9e5" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="47" y="38" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Generate Daily Lesson</text>
+          <text x="47" y="45" text-anchor="middle" font-size="4" fill="#58585a">Explanations + Examples</text>
+          <!-- Arrow down -->
+          <line x1="47" y1="44" x2="47" y2="52" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead3)"/>
+          <!-- Exercise -->
+          <rect x="20" y="54" width="28" height="12" fill="#fafbf9" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="34" y="61" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Practice & Exercise</text>
+          <text x="34" y="68" text-anchor="middle" font-size="4" fill="#58585a">Written + Listening</text>
+          <!-- Arrow right -->
+          <line x1="49" y1="60" x2="58" y2="60" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead3)"/>
+          <!-- Score -->
+          <rect x="60" y="54" width="20" height="12" fill="#fafbf9" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="70" y="61" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Auto-Scored</text>
+          <text x="70" y="68" text-anchor="middle" font-size="4" fill="#58585a">Feedback</text>
+          <!-- Arrow down -->
+          <line x1="70" y1="67" x2="70" y2="75" stroke="#3d6a5c" stroke-width="0.8" marker-end="url(#arrowhead3)"/>
+          <!-- Gap -->
+          <rect x="52" y="77" width="36" height="12" fill="#e8e9e5" stroke="#3d6a5c" stroke-width="0.5" rx="1"/>
+          <text x="70" y="84" text-anchor="middle" font-size="6" font-weight="500" fill="#1a1b18">Gap Analysis & Progress</text>
+        </svg>
+      </div>
+
+      <div class="detail-section">
+        <h3>What Goes In</h3>
+        <ul>
+          <li><strong>Your Danish level:</strong> Self-assess from A1 (absolute beginner) to B2 (intermediate advanced). Be honest about where you are.</li>
+          <li><strong>Focus areas:</strong> Which grammar topics do you want to tackle this week? Which vocabulary themes matter to you? Communication skills you're building toward?</li>
+          <li><strong>Study commitment:</strong> How many hours can you dedicate this week? Danish Learning adjusts lesson depth and exercise count accordingly.</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>What Comes Out</h3>
+        <ul>
+          <li><strong>Daily lesson:</strong> Grammar explanations in plain language, authentic Danish examples from real contexts, vocabulary tied to your focus.</li>
+          <li><strong>Exercises:</strong> Written production tasks and listening comprehension. Not busywork. Real language practice.</li>
+          <li><strong>Scored feedback:</strong> Your answers are graded immediately with detailed explanations. See exactly where you're weak and why. Gap analysis shows what to focus on next.</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>Learn Like You Live Here</h3>
+        <p>Content is grounded in Danish daily life. Learn the Danish you actually need — not textbook language, but real communication. Notice the cultural details. Understand not just the words, but how Danes think and express themselves.</p>
+        <p style="margin-top: 1rem;"><em>Demo generates lessons on demand with synthetic language data. Safe to explore different levels and topics.</em></p>
+      </div>
+
+      <div class="cta-group">
+        <a href="demo-danish-learning.html" class="cta">Try Demo</a>
+        <a href="#" class="cta secondary">View Source</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Each product runs on sample data. No sign-ups, no subscriptions, no real data collected. Just tools designed to solve real problems.</p>
+  </footer>
+</div>
+
+<script>
+function switchView(viewName) {
+  // Hide all views
+  document.querySelectorAll('.view').forEach(view => {
+    view.classList.remove('active');
+  });
+
+  // Show selected view
+  document.getElementById(viewName).classList.add('active');
+
+  // Update nav buttons
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  const targetBtn = document.querySelector(`[data-view="${viewName}"]`);
+  if (targetBtn) {
+    targetBtn.classList.add('active');
+  }
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Initialize nav button listeners
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    switchView(this.dataset.view);
+  });
+});
+</script>

@@ -1,0 +1,175 @@
+<title>HYROX 40 Demo</title>
+<style>
+:root {
+  --bg-primary: #fafbf9;
+  --bg-secondary: #f0f1ed;
+  --fg-primary: #1a1b18;
+  --fg-secondary: #58585a;
+  --accent: #3d6a5c;
+  --accent-light: #5a8d79;
+  --border: #e8e9e5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--fg-primary); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1000px; margin: 0 auto; }
+
+header { padding: 2rem 0; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+h1 { font-family: 'Crimson Text', Georgia, serif; font-size: 2rem; margin-bottom: 0.5rem; }
+.breadcrumb { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; cursor: pointer; text-decoration: none; }
+.breadcrumb:hover { text-decoration: underline; }
+
+.demo-frame { background: var(--bg-secondary); border: 1px solid var(--border); padding: 2rem; border-radius: 2px; margin: 2rem 0; }
+
+.workout-block {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 2px;
+}
+
+.workout-block h3 { color: var(--fg-primary); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.workout-block .day { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem; }
+.workout-block p { color: var(--fg-secondary); font-size: 0.95rem; margin-bottom: 1rem; }
+
+.timer-display {
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 2px;
+  margin: 1.5rem 0;
+  font-family: 'Courier New', monospace;
+}
+
+.timer-display .label { color: var(--fg-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.timer-display .time { font-size: 2.5rem; color: var(--accent); font-weight: bold; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-box {
+  background: var(--bg-secondary);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.stat-box .number { font-size: 1.8rem; color: var(--accent); font-weight: bold; }
+.stat-box .label { font-size: 0.85rem; color: var(--fg-secondary); margin-top: 0.5rem; }
+
+.btn { display: inline-block; background: var(--accent); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 2px; cursor: pointer; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+.btn:hover { background: var(--accent-light); }
+.btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn.secondary:hover { background: var(--accent); color: white; }
+
+footer { text-align: center; color: var(--fg-secondary); font-size: 0.9rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 3rem; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 1.5rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .timer-display .time { font-size: 1.8rem; }
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap">
+
+<div class="container">
+  <header>
+    <a class="breadcrumb" onclick="history.back()">← Back to Showroom</a>
+    <h1>HYROX 40</h1>
+    <p style="color: var(--fg-secondary); font-size: 1.1rem;">Five-day training for HYROX race readiness</p>
+  </header>
+
+  <div class="demo-frame">
+    <h2 style="margin-bottom: 1.5rem;">Day 4: Speed Block (Wednesday)</h2>
+    <p style="color: var(--fg-secondary); margin-bottom: 2rem;">You're an intermediate athlete targeting sub-55 minute finish. This is your progression block.</p>
+
+    <div class="timer-display">
+      <div class="label">Current Segment</div>
+      <div class="time">12:45</div>
+    </div>
+
+    <div class="workout-block">
+      <h3>SkiErg + Sled Push (1000m)</h3>
+      <div class="day">Segment 1 of 3</div>
+      <p><strong>Target pace:</strong> 1:54 per 500m SkiErg, 24 sled pushes in 90s</p>
+      <p><strong>Your last week:</strong> 1:58, 26 pushes (slower but more consistent)</p>
+      <p><strong>Improvement needed:</strong> +4 seconds/500m, -2 pushes for target. You're close.</p>
+      <button class="btn secondary" style="font-size: 0.85rem;">Start Timer</button>
+    </div>
+
+    <div class="workout-block">
+      <h3>1000m Row + 40 Burpee Box Jumps</h3>
+      <div class="day">Segment 2 of 3</div>
+      <p><strong>Target pace:</strong> 3:25 on row, burpees sub-60s total</p>
+      <p><strong>Your last week:</strong> 3:32 row, 68s burpees (good form, slightly slower)</p>
+      <p><strong>Path to target:</strong> Pace is tight. Focus on burpee rhythm to hit sub-60s.</p>
+      <button class="btn secondary" style="font-size: 0.85rem;">Next Segment</button>
+    </div>
+
+    <div class="workout-block">
+      <h3>1000m Run (Finisher)</h3>
+      <div class="day">Segment 3 of 3</div>
+      <p><strong>Target pace:</strong> 4:15 per km (sub-4:15 overall)</p>
+      <p><strong>Your last week:</strong> 4:32 (tired from prior segments, expected)</p>
+      <p><strong>What this means:</strong> You have 7 seconds/km to find. Possible — run felt strong that day.</p>
+      <button class="btn secondary" style="font-size: 0.85rem;">Final Segment</button>
+    </div>
+  </div>
+
+  <div class="demo-frame">
+    <h2 style="margin-bottom: 1.5rem;">Week-over-Week Progress</h2>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="number">Week 1</div>
+        <div class="label">Baseline (starting fitness)</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">Week 4</div>
+        <div class="label">Current (after 3 blocks)</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">+18 sec</div>
+        <div class="label">SkiErg pace improvement</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">-1:14</div>
+        <div class="label">Overall 1000m Run</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">52:40</div>
+        <div class="label">Projected HYROX time</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">2 Days</div>
+        <div class="label">Until race day</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-frame">
+    <h2 style="margin-bottom: 1.5rem;">How HYROX 40 Works</h2>
+    <p style="margin-bottom: 1rem;">Precision training for the exact 8.6 km race:</p>
+    <ul style="margin-left: 2rem; color: var(--fg-secondary); margin-bottom: 2rem;">
+      <li>Your baseline fitness level sets Week 1 targets (this is your 1RM, 2k row time, running pace)</li>
+      <li>Five workouts (Days 1–5) layer up: strength, skill, speed, race simulation, and active recovery</li>
+      <li>Nested timers keep every segment in rhythm — you see target, actual, and how you compare week-to-week</li>
+      <li>Target vs actual scoring shows exactly where you gain or lose time</li>
+      <li>Week-over-week tracking reveals progress and predicts your race finish time</li>
+    </ul>
+    <p style="color: var(--fg-secondary); font-size: 0.95rem;">Designed for athletes who know their fitness level and want to peak in 5 days, not 8 weeks.</p>
+  </div>
+
+  <footer>
+    <p>Demo uses a realistic intermediate athlete's progression. Sample timers and data. Not a real race prediction.</p>
+  </footer>
+</div>

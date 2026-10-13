@@ -1,0 +1,183 @@
+<title>Danish Learning Demo</title>
+<style>
+:root {
+  --bg-primary: #fafbf9;
+  --bg-secondary: #f0f1ed;
+  --fg-primary: #1a1b18;
+  --fg-secondary: #58585a;
+  --accent: #3d6a5c;
+  --accent-light: #5a8d79;
+  --border: #e8e9e5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--fg-primary); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1000px; margin: 0 auto; }
+
+header { padding: 2rem 0; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+h1 { font-family: 'Crimson Text', Georgia, serif; font-size: 2rem; margin-bottom: 0.5rem; }
+.breadcrumb { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; cursor: pointer; text-decoration: none; }
+.breadcrumb:hover { text-decoration: underline; }
+
+.demo-frame { background: var(--bg-secondary); border: 1px solid var(--border); padding: 2rem; border-radius: 2px; margin: 2rem 0; }
+
+.lesson-section {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.lesson-section h3 { color: var(--fg-primary); margin-bottom: 0.75rem; font-size: 1rem; }
+.lesson-section .subtitle { color: var(--accent); font-size: 0.85rem; font-weight: 500; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.lesson-section p { color: var(--fg-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+.lesson-section strong { color: var(--fg-primary); }
+
+.example-box {
+  background: var(--bg-secondary);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 2px solid var(--accent-light);
+  border-radius: 2px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.answer-key {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.answer-key h4 { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.answer-key .item { margin-bottom: 1rem; }
+.answer-key .correct { color: var(--accent); font-weight: 500; }
+.answer-key .gap { color: var(--fg-secondary); font-size: 0.9rem; font-style: italic; }
+
+.score-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 2px;
+  margin: 1.5rem 0;
+}
+
+.score-card .percent { font-size: 2rem; color: var(--accent); font-weight: bold; }
+.score-card .label { color: var(--fg-secondary); font-size: 0.9rem; margin-top: 0.5rem; }
+
+.btn { display: inline-block; background: var(--accent); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 2px; cursor: pointer; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+.btn:hover { background: var(--accent-light); }
+.btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn.secondary:hover { background: var(--accent); color: white; }
+
+footer { text-align: center; color: var(--fg-secondary); font-size: 0.9rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 3rem; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap">
+
+<div class="container">
+  <header>
+    <a class="breadcrumb" onclick="history.back()">← Back to Showroom</a>
+    <h1>Danish Learning</h1>
+    <p style="color: var(--fg-secondary); font-size: 1.1rem;">Personalized daily lessons that match your exact level</p>
+  </header>
+
+  <div class="demo-frame">
+    <h2 style="margin-bottom: 1.5rem;">Today's Lesson (B1 Level)</h2>
+    <p style="color: var(--fg-secondary); margin-bottom: 2rem;">Monday, Week 3: Conditional Clauses (Betingelsessætninger) + Job Interview Context</p>
+
+    <div class="lesson-section">
+      <h3>Læring (Forklaring)</h3>
+      <div class="subtitle">Concept Explanation</div>
+      <p><strong>Conditional clauses</strong> describe what happens if something occurs. In Danish, there are three main types:</p>
+      <p style="margin-top: 1rem;"><strong>Type 1 (Real):</strong> Present condition, future result</p>
+      <div class="example-box">Hvis jeg får jobbet, flytter jeg til København.<br>(If I get the job, I'll move to Copenhagen.)</div>
+      <p style="margin-top: 1rem;"><strong>Type 2 (Hypothetical):</strong> Unlikely or impossible</p>
+      <div class="example-box">Hvis jeg var dig, ville jeg søge øl job med højere løn.<br>(If I were you, I would apply for a job with higher salary.)</div>
+      <p style="margin-top: 1rem;"><strong>Common context:</strong> Job interviews often use Type 1 to discuss plans ("If you're hired...") and Type 2 to ask hypothetical questions.</p>
+    </div>
+
+    <div class="lesson-section">
+      <h3>Opgaver (Exercises)</h3>
+      <div class="subtitle">Practice & Production</div>
+      <p><strong>Exercise 1:</strong> Fill in the blanks with correct conditional form.</p>
+      <div class="example-box" style="background: var(--bg-primary); border-left: 2px solid var(--border);">
+        1. Hvis jeg _____ (have) sommerferie, tager jeg til Sverige.<br>
+        2. Hvad ville du gøre, hvis du _____ (kunne) flytte hvor som helst?<br>
+        3. Hvis hun starter i juli, _____ (skulle) hun være klar inden oktober.
+      </div>
+      <p style="margin-top: 1rem;"><strong>Exercise 2:</strong> Write two conditional sentences about your dream job.</p>
+      <p style="color: var(--fg-secondary); font-style: italic;">Example: "If I work at [company], I will [specific skill/outcome]."</p>
+      <button class="btn secondary" style="font-size: 0.85rem;">Submit Answers</button>
+    </div>
+
+    <div class="answer-key">
+      <h4>Facit & Gap Analysis</h4>
+      <div class="item">
+        <div><strong>Q1: Hvis jeg _____ (have) sommerferie...</strong></div>
+        <div class="correct">✓ har</div>
+        <div class="gap">Your answer: "vil have" — incorrect (future form), but shows you understand future intent. Use present 'har' for simple conditions.</div>
+      </div>
+      <div class="item">
+        <div><strong>Q2: Hvad ville du gøre, hvis du _____ (kunne) flytte hvor som helst?</strong></div>
+        <div class="correct">✓ kunne</div>
+        <div class="gap">Your answer: correct! Imperfect subjunctive is your strong form.</div>
+      </div>
+      <div class="item">
+        <div><strong>Q3: Hvis hun starter i juli, _____ (skulle) hun være klar inden oktober.</strong></div>
+        <div class="correct">✓ skulle</div>
+        <div class="gap">Your answer: "skal" — close. In written Danish, 'skulle' (modal form) is more formal. You're using conversational form (also acceptable).</div>
+      </div>
+      <div class="item" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+        <div><strong>Writing Exercise Feedback:</strong></div>
+        <div class="gap">Sentence 1: Strong. Conditional form correct, vocabulary appropriate for career context.</div>
+        <div class="gap">Sentence 2: "Jeg ville arbejde" — good, but you used will/would when you could have shown more nuance with 'kunne jeg arbejde' (could I work). Try modal + infinitive for more natural phrasing.</div>
+      </div>
+    </div>
+
+    <div class="score-card">
+      <div class="percent">78%</div>
+      <div class="label">Lesson Mastery (Today)</div>
+    </div>
+
+    <p style="margin: 1.5rem 0; padding: 1rem; background: var(--bg-secondary); border-radius: 2px; color: var(--fg-secondary);">
+      <strong>Your gap:</strong> Future vs imperfect subjunctive. You excel with 'kunne' forms but sometimes use present-future mix when past hypothetical is called for. Tomorrow we'll drill this in context.
+    </p>
+  </div>
+
+  <div class="demo-frame">
+    <h2 style="margin-bottom: 1.5rem;">This Week's Learning Path</h2>
+    <ul style="margin-left: 2rem; color: var(--fg-secondary);">
+      <li><strong>Mon:</strong> Conditional clauses (you are here) — job interview framing</li>
+      <li><strong>Tue:</strong> Time expressions in past tense — your reported weakness, getting targeted practice</li>
+      <li><strong>Wed:</strong> Modal verbs + infinitive — bridges your strength (subjunctive) with pragmatic usage</li>
+      <li><strong>Thu:</strong> Comprehension: Danish news article about labor market trends — real-world application</li>
+      <li><strong>Fri:</strong> Speaking simulation: Mock job interview in Danish — production checkpoint</li>
+    </ul>
+  </div>
+
+  <div class="demo-frame">
+    <h2 style="margin-bottom: 1.5rem;">How Danish Learning Works</h2>
+    <p style="margin-bottom: 1rem;">Three documents, daily, tailored to your level:</p>
+    <ul style="margin-left: 2rem; color: var(--fg-secondary);">
+      <li><strong>Læring (Explanation):</strong> Grammar, vocabulary, and context-specific phrasing at your B1 level — no baby language, no overwhelming detail</li>
+      <li><strong>Opgaver (Exercises):</strong> Mix of fill-in-the-blank, production, and comprehension — designed to surface your exact gaps</li>
+      <li><strong>Facit (Answer Key):</strong> Not just answers — detailed feedback on why your wrong answer was close, what rule applies, what to practice next</li>
+    </ul>
+    <p style="margin-top: 1rem; color: var(--fg-secondary); font-size: 0.95rem;">Topics rotate through your requested focus areas (job interviews this week, cooking next week, travel after that). Difficulty adapts week-to-week as you improve.</p>
+  </div>
+
+  <footer>
+    <p>Demo shows a realistic B1 lesson with actual gap analysis and scoring. Sample data from language learning patterns.</p>
+  </footer>
+</div>
